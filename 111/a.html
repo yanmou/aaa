@@ -9,21 +9,86 @@ ccccccccc
 aaaaaaaaa
 12313216502
 <div>
-    <span>
+    <!-- <span>
         <input type="text" id="name"  maxlength="8" placeholder="请输入您的姓名或昵称" >
         <button id="a">1111</button>
-    </span>
+    </span> -->
+    <input   type="date" id="date"  placeholder="请选择您的出生日期" >
+    <button id="a">1111</button>
+
   
 </div>
 <script>
-  
-  var butn = document.getElementById("a");
-  butn.onclick = function(){
-        var name = document.getElementById("name");
-        var bb = name.value;
-        var aa = name.value.length;
-        console.log(aa)
-        console.log(bb)
+      //获取字符串长度（汉字算两个字符，字母数字算一个）
+    //   function getByteLen(val) {
+    //   var len = 0;
+    //   for (var i = 0; i < val.length; i++) {
+    //     var a= val.charAt(i);
+    //     if (a.match(/[^\x00-\xff]/ig) != null) {
+    //       len += 2;
+    //     }
+    //     else {
+    //       len += 1;
+    //     }
+    //   }
+    //   return len;
+    // }
+// 当前日期 yy-mm-dd
+ function getNowFormatDate() {
+        var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        return currentdate;
     }
-    
+console.log(getNowFormatDate())
+
+  var butn = document.getElementById("a");
+
+  var newdate = new Date();
+  console.log(newdate)
+
+  butn.onclick = function(){
+      var date = document.getElementById("date").value;
+//         var name = document.getElementById("name");
+//         var bb = name.value;
+//         var aa = name.value.length;
+//         alert(getByteLen(bb))
+//         console.log(aa)
+//         console.log(bb)
+      console.log(date); 
+    //   var t3="2017-08-18 04:56:38";
+        timeFn(date);
+    }
+
+function timeFn(d1) {//di作为一个变量传进来
+    //如果时间格式是正确的，那下面这一步转化时间格式就可以不用了
+    var dateBegin = new Date(d1.replace(/-/g, "/"));//将-转化为/，使用new Date
+    var dateEnd = new Date();//获取当前时间
+    var dateDiff = dateEnd.getTime() - dateBegin.getTime();//时间差的毫秒数
+    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
+    var leave1=dateDiff%(24*3600*1000)    //计算天数后剩余的毫秒数
+    var hours=Math.floor(leave1/(3600*1000))//计算出小时数
+    //计算相差分钟数
+    var leave2=leave1%(3600*1000)    //计算小时数后剩余的毫秒数
+    var minutes=Math.floor(leave2/(60*1000))//计算相差分钟数
+    //计算相差秒数
+    var leave3=leave2%(60*1000)      //计算分钟数后剩余的毫秒数
+    var seconds=Math.round(leave3/1000)
+    let monthDiff=Math.floor(dayDiff/30);//以30天为一个月不够精准严谨
+    let yearDiff=Math.floor(monthDiff/12);//获取相差的年份
+    console.log(" 相差 "+ yearDiff +" 年"+ dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒" )
+    // console.log(dateDiff+"时间差的毫秒数",dayDiff+"计算出相差天数",leave1+"计算天数后剩余的毫秒数"
+    //     ,hours+"计算出小时数",minutes+"计算相差分钟数",seconds+"计算相差秒数");
+}
+// var t3="2017-08-18 04:56:38";
+// timeFn(t3);
 </script>
