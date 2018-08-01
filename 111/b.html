@@ -1,16 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 
-<div>
-   <input type="tel" name="" id="jia">
- 
-  
-</div>
-<script>
-    var i,j,k;
-    i = prompt("请输入第一个数");
-    j = prompt("请输入第二个数");
-    k = Number(j)+Number(i);
-    // alert("您的结果为"+k+"");
-    var jia = document.getElementById("jia");
-    k = k + "cm"
-    jia.value = k
-</script>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Insert title here</title>
+  <script type="text/javascript">
+    //获取焦点
+    function getfocus(id) {
+      document.getElementById(id).select();
+    };
+
+    function getNextObj(id) {
+      var obj = document.getElementById(id);
+      if (obj.value.toString().length == obj.getAttribute("maxlength")) {
+        document.getElementById(id).blur(function () {
+          alert("失去焦点")
+        });
+        var nextId = id + 1;
+        document.getElementById(nextId).focus();
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <label>年：</label>
+  <input type="text" id="1" maxlength="4" size="2" onfocus="getfocus(1)" onkeyup="getNextObj(1)" />
+  <label>月：</label>
+  <input type="text" id="2" maxlength="2" size="2" onfocus="getfocus(2)" onkeyup="getNextObj(2)" />
+  <label>日：</label>
+  <input type="text" id="3" maxlength="2" size="2" onfocus="getfocus(3)" onkeyup="getNextObj(3)" />
+  <label>时：</label>
+  <input type="text" id="4" maxlength="2" size="2" onfocus="getfocus(4)" onkeyup="getNextObj(4)" />
+  <label>分：</label>
+  <input type="text" id="5" maxlength="2" size="2" onfocus="getfocus(5)" onkeyup="getNextObj(5)" />
+  <label>秒：</label>
+  <input type="text" id="6" maxlength="2" size="2" onfocus="getfocus(6)" onkeyup="getNextObj(6)" />
+</body>
+
+</html>
