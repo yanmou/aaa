@@ -17,7 +17,10 @@
           alert("失去焦点")
         });
         var nextId = id + 1;
-        document.getElementById(nextId).focus();
+        if(nextId<=6){
+          alert("失去了焦点")
+          document.getElementById(nextId).focus();
+        }
       }
     }
   </script>
@@ -36,6 +39,9 @@
   <input type="text" id="5" maxlength="2" size="2" onfocus="getfocus(5)" onkeyup="getNextObj(5)" />
   <label>秒：</label>
   <input type="text" id="6" maxlength="2" size="2" onfocus="getfocus(6)" onkeyup="getNextObj(6)" />
+
+
+  <input type="number" value="">
 </body>
 
 </html>
