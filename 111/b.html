@@ -14,7 +14,6 @@
       var obj = document.getElementById(id);
       if (obj.value.toString().length == obj.getAttribute("maxlength")) {
         document.getElementById(id).blur(function () {
-          alert("失去焦点")
         });
         var nextId = id + 1;
         if(nextId<=6){
@@ -42,6 +41,8 @@
 
 
   <input type="number" value="">
+  <input type="tel" class="height-input" maxlength="1" >
+
 </body>
 
 </html>
