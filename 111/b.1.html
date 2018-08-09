@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Insert title here</title>
+  
+</head>
+
+<body>
+  
+
+    <input type="date" name="test" class="date"> 
+    
+
+
+</body>
+
+<script type="text/javascript">
+    //设置日期默认值为当天
+    var nowDate=new Date();     
+            var nowMonth=nowDate.getMonth()+1;   //月份和日期若为小于10的数要做处理
+            var nowDay=nowDate.getDate(); 
+            if((nowDate.getMonth()+1)<10){    
+                nowMonth="0"+nowMonth; 
+            }
+            if(nowDate.getDate()<10){
+                nowDay='0'+nowDay;
+            }
+            var dateVal=nowDate.getFullYear()+"-"+nowMonth+"-"+nowDay;    //显示格式：2018/07/14
+            
+            $('.date').val(dateVal)
+</script>
+</html>
